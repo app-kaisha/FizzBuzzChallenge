@@ -9,14 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView {
+            VStack {
+                ForEach(1..<101) { number in
+                    Text("\(getString(number: number))")
+                }
+            }
         }
+        .scrollIndicators(.hidden)
         .padding()
+    }
+    
+    func getString(number: Int) -> String {
+        if (number % 3 == 0) && (number % 5 == 0) {
+            return "FizzBuzz"
+        }
+        if number % 3 == 0 {
+            return "Fizz"
+        }
+        if number % 5 == 0 {
+            return "Buzz"
+        }
+        return "\(number)"
     }
 }
 
